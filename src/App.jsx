@@ -22,6 +22,11 @@ function App() {
       title: "Project 3",
       description: "Description of the project",
     },
+       {
+      id: 4,
+      title: "Project 4",
+      description: "Description of the project",
+    },
   ]);
 
   const [searchTerm, setSearchTerm] = useState("");

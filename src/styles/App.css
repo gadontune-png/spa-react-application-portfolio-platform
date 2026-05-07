@@ -13,12 +13,13 @@ body {
   display: flex;
   justify-content: center;
   padding: 40px 20px;
+  background: #777;
 }
 
 .container {
   width: 100%;
   max-width: 500px;
-  background: #fff;
+  background:rgb(74, 164, 247);
   min-height: 100vh;
 }
 
@@ -38,6 +39,7 @@ body {
 
 .form-container h2 {
   margin-bottom: 15px;
+  
 }
 
 form {
@@ -67,12 +69,22 @@ button {
   padding: 10px;
   border: 1px solid #777;
   background: white;
+  font-weight: 600;
   cursor: pointer;
   border-radius: 5px;
+  background: rgb(79, 79, 238);
+  
+}
+button:hover {
+  background: rgb(2, 2, 118);
+  color: white;
+  transition: 0.3s;
+  transform: scale(1.05);
 }
 
 .search-container {
   padding: 0 25px;
+  
 }
 
 .search-container input {
@@ -81,11 +93,21 @@ button {
 
 .project-card {
   display: flex;
-  gap: 15px;
+  gap: 30px;
   align-items: center;
   padding: 15px 0;
   border-top: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+  margin-bottom: 15px;
+  border-radius: 6px;
+  
 }
+
+.project-card:hover {
+  background: #eee;
+  transition: 0.3s;
+  transform: scale(1.02);
+}  
 
 .image-placeholder {
   width: 50px;
@@ -96,6 +118,7 @@ button {
   align-items: center;
   font-size: 22px;
   background: #777;
+  margin-left: 10px;
 }
 
 .no-projects {
@@ -116,5 +139,6 @@ button {
 
   button {
     width: 100%;
+    
   }
 }
