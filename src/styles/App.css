@@ -1,144 +1,168 @@
 * {
+  width: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
+;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background:
+    linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0,20px, 0.3);
+  color: #d1d5db;
+  text-align: center;
+}
+.app-header {
+  margin-bottom: 30px;
+}
+.form {
+  margin-bottom: 30px;
+  text-align: left;
 }
 
-body {
-  background: #111;
+.spacer {
+  margin-top: 20px;
 }
 
-.app {
+.placeholder-title {
+  height: 40px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  width: 870px;
+}
+
+.placeholder-description {
+  height: 80px;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 10px;
+  width: 870px;
+}
+
+
+.button-container {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
-  background: #777;
 }
 
-.container {
+.submit-button {
+  background: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  width:250px;
+
+}
+
+.submit-button:hover {
+  background: #1b4edb;
+  transform: translateY(-3px);
+  transition: 0.2s ease;
+  box-shadow: 0 4px 12px rgba(253, 254, 255, 0.2);
+}
+
+.search-input {
   width: 100%;
-  max-width: 500px;
-  background:rgb(74, 164, 247);
-  min-height: 100vh;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: whitesmoke;
+  color: black;
+  margin-bottom: 30px;
+  width: 600px;
+  font-size: 16px;
 }
 
-.header {
-  text-align: center;
-  padding: 25px;
-  border-bottom: 1px solid #999;
-}
-
-.form-container,
 .project-list {
-  border: 1px solid #888;
-  margin: 25px;
-  border-radius: 6px;
-  padding: 15px;
-}
-
-.form-container h2 {
-  margin-bottom: 15px;
-  
-}
-
-form {
   display: flex;
   flex-direction: column;
-}
-
-label {
-  margin: 10px 0 5px;
-}
-
-input,
-textarea {
-  padding: 10px;
-  border: 1px solid #888;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-textarea {
-  min-height: 100px;
-  resize: none;
-}
-
-button {
-  width: 100px;
-  padding: 10px;
-  border: 1px solid #777;
-  background: white;
-  font-weight: 600;
-  cursor: pointer;
-  border-radius: 5px;
-  background: rgb(79, 79, 238);
-  
-}
-button:hover {
-  background: rgb(2, 2, 118);
-  color: white;
-  transition: 0.3s;
-  transform: scale(1.05);
-}
-
-.search-container {
-  padding: 0 25px;
-  
-}
-
-.search-container input {
-  width: 100%;
+  gap: 20px;
+    
 }
 
 .project-card {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   align-items: center;
-  padding: 15px 0;
-  border-top: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
-  margin-bottom: 15px;
-  border-radius: 6px;
-  
+  padding: 18px;
+  border-radius: 12px;
+  background: #111827;
+  border: 1px solid #374151;
+  transition: 0.3s ease;
+  width: 850px;
+  margin-top: 20px;
+  text-align: left;
 }
 
 .project-card:hover {
-  background: #eee;
-  transition: 0.3s;
-  transform: scale(1.02);
-}  
+  transform: translateY(-3px);
+  border-color: #60a5fa;
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
 
 .image-placeholder {
-  width: 50px;
-  height: 50px;
-  border: 1px solid #888;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #374151;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
-  background: #777;
-  margin-left: 10px;
+  font-size: 24px;
+}
+
+.project-content {
+  flex: 1;
+}
+
+.project-content h2 {
+  color: #60a5fa;
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  color: #d1d5db;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+
+.delete-btn {
+  background: #dc2626;
+  width: 60px;  
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #b91c1c;
 }
 
 .no-projects {
-  padding: 20px 0;
   text-align: center;
-  color: gray;
+  color: #9ca3af;
+  padding-bottom: 30px;
 }
 
 @media (max-width: 600px) {
-  .container {
-    max-width: 100%;
-  }
 
   .project-card {
     flex-direction: column;
     align-items: flex-start;
   }
 
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
   button {
     width: 100%;
-    
   }
 }

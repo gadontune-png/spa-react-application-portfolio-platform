@@ -1,20 +1,18 @@
 import ProjectCard from "./ProjectCard";
 
-function ProjectList({ projects }) {
+function ProjectList({ projects, deleteProject }) {
+
   return (
     <div className="project-list">
-      {projects.length > 0 ? (
-        projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-          />
-        ))
-      ) : (
-        <p className="no-projects">
-          No projects match your search.
-        </p>
-      )}
+
+      {projects.map((project) => (
+        <ProjectCard
+          key={project.id}
+          project={project}
+          deleteProject={deleteProject}
+        />
+      ))}
+
     </div>
   );
 }

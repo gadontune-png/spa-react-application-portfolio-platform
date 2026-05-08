@@ -6,52 +6,90 @@ import ProjectList from "./components/ProjectList";
 import "./styles/App.css";
 
 function App() {
+
+  // GLOBAL STATE
   const [projects, setProjects] = useState([
     {
       id: 1,
-      title: "Project 1",
-      description: "Description of the project",
+      title: "Portfolio Website",
+      description: "A responsive portfolio website built with React.",
+      category: "React",
     },
     {
       id: 2,
-      title: "Project 2",
-      description: "Description of the project",
+      title: "Currency Converter",
+      description: "Currency converter using API integration.",
+      category: "JavaScript",
     },
     {
       id: 3,
-      title: "Project 3",
-      description: "Description of the project",
-    },
-       {
-      id: 4,
-      title: "Project 4",
-      description: "Description of the project",
+      title: "Eye Clinic Website",
+      description: "Modern healthcare website for an eye clinic.",
+      category: "Healthcare",
     },
   ]);
 
+  // SEARCH STATE
   const [searchTerm, setSearchTerm] = useState("");
 
-  const addProject = (newProject) => {
-    setProjects([...projects, newProject]);
+  // ADD PROJECT
+  const addProject = (project) => {
+    const newProject = {
+      ...project,
+      id: Date.now(),
+    };
+
+    setProjects((prevProjects) => [
+      ...prevProjects,
+      newProject,
+    ]);
   };
 
+  // DELETE PROJECT
+  const deleteProject = (id) => {
+    setProjects((prevProjects) =>
+      prevProjects.filter((project) => project.id !== id)
+    );
+  };
+
+  // FILTER PROJECTS
   const filteredProjects = projects.filter((project) =>
-    project.title.toLowerCase().includes(searchTerm.toLowerCase())
+    project.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="app">
       <div className="container">
-        <Header />
 
+       <div className="app-header"> 
+        <Header 
+          title="Personal Portfolio Platform"
+          subtitle="Manage and showcase your projects"
+        />
+        </div>
+
+        <div className="form">
         <ProjectForm addProject={addProject} />
+        </div>
 
-        <SearchBar
+        <SearchBar className="search-bar"
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
         />
 
-        <ProjectList projects={filteredProjects} />
+        <ProjectList
+          projects={filteredProjects}
+          deleteProject={deleteProject}
+        />
+
+        {filteredProjects.length === 0 && (
+          <p className="no-projects">
+            No projects found.
+          </p>
+        )}
+
       </div>
     </div>
   );
