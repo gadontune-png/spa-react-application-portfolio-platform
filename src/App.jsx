@@ -6,7 +6,6 @@ import ProjectList from "./components/ProjectList";
 import "./styles/App.css";
 
 function App() {
-
   // GLOBAL STATE
   const [projects, setProjects] = useState([
     {
@@ -27,10 +26,37 @@ function App() {
       description: "Modern healthcare website for an eye clinic.",
       category: "Healthcare",
     },
+     {
+      id: 4,
+      title: "React hooks and states",
+      description: "understanding react hooks and states.",
+      category: "React",
+    },
+     {
+      id: 5,
+      title: "Flatiron bookstore",
+      description: "A simple bookstore application.",
+      category: "JavaScript",
+    },
+    {
+      id: 6,
+      title: "API and Fetch",
+      description: "A simple API integration project.",
+      category: "JavaScript",
+    },
+    {
+      id: 7,
+      title: "CSS Grid Layout",
+      description: "A simple CSS Grid Layout project.",
+      category: "CSS",
+    },
   ]);
 
   // SEARCH STATE
   const [searchTerm, setSearchTerm] = useState("");
+
+  // CATEGORY FILTER STATE
+  const [categoryFilter, setCategoryFilter] = useState("All");
 
   // ADD PROJECT
   const addProject = (project) => {
@@ -39,45 +65,61 @@ function App() {
       id: Date.now(),
     };
 
-    setProjects((prevProjects) => [
-      ...prevProjects,
-      newProject,
-    ]);
+    setProjects((prev) => [...prev, newProject]);
   };
 
   // DELETE PROJECT
   const deleteProject = (id) => {
-    setProjects((prevProjects) =>
-      prevProjects.filter((project) => project.id !== id)
+    setProjects((prev) =>
+      prev.filter((project) => project.id !== id)
     );
   };
-
-  // FILTER PROJECTS
-  const filteredProjects = projects.filter((project) =>
-    project.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase())
+// FILTER + SEARCH + CATEGORY
+const filteredProjects = projects
+  .filter((project) =>
+    project.title.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+  .filter((project) =>
+    categoryFilter === "All"
+      ? true
+      : project.category === categoryFilter
   );
+
+  // UNIQUE CATEGORIES
+  const categories = [
+    "All",
+    ...new Set(projects.map((p) => p.category)),
+  ];
 
   return (
     <div className="app">
       <div className="container">
 
-       <div className="app-header"> 
-        <Header 
+        <Header
           title="Personal Portfolio Platform"
           subtitle="Manage and showcase your projects"
         />
-        </div>
 
-        <div className="form">
         <ProjectForm addProject={addProject} />
-        </div>
 
-        <SearchBar className="search-bar"
+        <SearchBar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
         />
+
+        {/* CATEGORY FILTER */}
+        <div className="category-filter">
+          <select
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+          >
+            {categories.map((cat, i) => (
+              <option key={i} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <ProjectList
           projects={filteredProjects}
@@ -85,9 +127,7 @@ function App() {
         />
 
         {filteredProjects.length === 0 && (
-          <p className="no-projects">
-            No projects found.
-          </p>
+          <p className="no-projects">No projects found.</p>
         )}
 
       </div>

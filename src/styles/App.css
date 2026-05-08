@@ -1,104 +1,127 @@
+/* RESET */
 * {
-  width: 100%;
   margin: 0;
   padding: 0;
-;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
+
+/* BODY */
+body {
+  background: gray;
+}
+
+/* MAIN APP CONTAINER */
 .container {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 40px auto;
   padding: 20px;
-  background:
-    linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0,20px, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 20, 0.3);
   color: #d1d5db;
   text-align: center;
 }
+
+/* HEADER */
 .app-header {
   margin-bottom: 30px;
 }
-.form {
-  margin-bottom: 30px;
-  text-align: left;
+
+.header h1 {
+  font-size: 2rem;
+  color: #60a5fa;
 }
 
-.spacer {
-  margin-top: 20px;
+.header p {
+  color: #9ca3af;
+  margin-top: 5px;
 }
 
-.placeholder-title {
-  height: 40px;
-  font-size: 16px;
-  border-radius: 8px;
-  padding: 10px;
-  width: 870px;
-}
-
-.placeholder-description {
-  height: 80px;
-  font-size: 16px;
-  border-radius: 8px;
-  padding: 10px;
-  width: 870px;
-}
-
-
-.button-container {
+/* FORM */
+.project-form {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
-.submit-button {
+.project-form input,
+.project-form textarea,
+.project-form select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #f5f5f5;
+  color: black;
+  font-size: 14px;
+  
+}
+
+/* BUTTON */
+.submit-button,
+.project-form button {
   background: #2563eb;
   color: white;
-  padding: 10px 20px;
+  padding: 10px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 15px;
-  width:250px;
-
-}
-
-.submit-button:hover {
-  background: #1b4edb;
-  transform: translateY(-3px);
   transition: 0.2s ease;
-  box-shadow: 0 4px 12px rgba(253, 254, 255, 0.2);
+  width:max-content;
+  align-self: center;
 }
 
-.search-input {
+.submit-button:hover,
+.project-form button:hover {
+  background: #1b4edb;
+  transform: translateY(-2px);
+}
+
+/* SEARCH */
+.search-bar input {
   width: 100%;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #374151;
-  background: whitesmoke;
+  background: #f5f5f5;
   color: black;
-  margin-bottom: 30px;
-  width: 600px;
-  font-size: 16px;
+  margin-bottom: 20px;
 }
 
+/* CATEGORY FILTER */
+.category-filter {
+  margin-bottom: 20px;
+}
+
+.category-filter select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #f5f5f5;
+  color: black;
+}
+
+/* PROJECT LIST */
 .project-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
-    
 }
 
+/* PROJECT CARD */
 .project-card {
   display: flex;
-  gap: 20px;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
   padding: 18px;
   border-radius: 12px;
-  background: #111827;
+  background: #102e6f;
   border: 1px solid #374151;
   transition: 0.3s ease;
-  width: 850px;
-  margin-top: 20px;
   text-align: left;
+  
 }
 
 .project-card:hover {
@@ -107,62 +130,62 @@
   box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
 }
 
-.image-placeholder {
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  background: #374151;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-}
-
-.project-content {
-  flex: 1;
-}
-
-.project-content h2 {
+.project-card h3 {
   color: #60a5fa;
-  margin-bottom: 10px;
 }
 
-.project-content p {
+.project-card p {
   color: #d1d5db;
-  margin-bottom: 12px;
   line-height: 1.5;
 }
 
+/* CATEGORY TAG */
+.project-category {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #4f46e5;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  width: fit-content;
+}
 
+/* DELETE BUTTON */
 .delete-btn {
   background: #dc2626;
-  width: 60px;  
+  color: white;
+  padding: 8px 12px;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
+
+  margin-top: auto;   /* 👈 pushes it to bottom */
+  align-self: flex-end; /* 👈 pushes it to right */
 }
 
 .delete-btn:hover {
   background: #b91c1c;
 }
 
+/* NO PROJECTS */
 .no-projects {
   text-align: center;
   color: #9ca3af;
-  padding-bottom: 30px;
+  padding: 20px;
 }
 
+/* RESPONSIVE */
 @media (max-width: 600px) {
-
-  .project-card {
-    flex-direction: column;
-    align-items: flex-start;
+  .container {
+    margin: 20px;
+    padding: 15px;
   }
 
   .header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
-  button {
-    width: 100%;
+  .project-card {
+    padding: 15px;
   }
 }

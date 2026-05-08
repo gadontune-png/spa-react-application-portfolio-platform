@@ -1,71 +1,53 @@
 import { useState } from "react";
 
 function ProjectForm({ addProject }) {
-
-  // LOCAL STATE
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
- 
+  const [category, setCategory] = useState("");
 
-  // FORM SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !description ) {
-      return;
-    }
+    if (!title || !description || !category) return;
 
-    const newProject = {
+    addProject({
       title,
       description,
-      
-    };
+      category,
+    });
 
-    addProject(newProject);
-
-    // CLEAR FORM
     setTitle("");
     setDescription("");
-   
+    setCategory("");
   };
 
   return (
-    <div className="form-container">
+    <form className="project-form" onSubmit={handleSubmit}>
+      <h2>Add Project</h2>
 
-      <h2>Add New Project</h2>
+      <input
+        type="text"
+        placeholder="Project Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-      <form onSubmit={handleSubmit}>
+      <textarea
+        placeholder="Project Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
 
-        <label>Project Title</label>
-        <input
-          className="placeholder-title"
-          type="text"
-          placeholder="Enter project title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        
-        <div className="spacer">
-        <label >Project Description</label>
-        <textarea
-          className="placeholder-description"
-          placeholder="Enter project description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        </div>
-       
+      {/* CATEGORY INPUT */}
+      <input
+        type="text"
+        placeholder="Category (e.g React, JavaScript)"
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      />
 
-        <div className="button-container">
-        <button
-        className="submit-button"
-         type="submit">
-          Add Project
-        </button>
-        </div>
-
-      </form>
-    </div>
+      <button type="submit">Add Project</button>
+    </form>
   );
 }
 

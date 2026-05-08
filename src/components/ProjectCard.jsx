@@ -1,23 +1,17 @@
 function ProjectCard({ project, deleteProject }) {
-
   return (
     <div className="project-card">
-
-      <div className="image-placeholder">
-        {/* Future image upload feature */} 
+      <div className="project-card-header">
+        <h3>{project.title}</h3>
       </div>
 
-      <div className="project-content">
+      <p className="project-description">
+        {project.description}
+      </p>
 
-        <h2>{project.title}</h2>
-
-        <p>{project.description}</p>
-
-        <span className="category">
-          {project.category}
-        </span>
-
-      </div>
+      <span className="project-category">
+        {project.category}
+      </span>
 
       <button
         className="delete-btn"
@@ -25,7 +19,6 @@ function ProjectCard({ project, deleteProject }) {
       >
         Delete
       </button>
-
     </div>
   );
 }

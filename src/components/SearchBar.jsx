@@ -1,16 +1,12 @@
 function SearchBar({ searchTerm, setSearchTerm }) {
-
   return (
-    <div className="search-container">
-
+    <div className="search-bar">
       <input
-      className="search-input"
         type="text"
         placeholder="Search projects..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-
     </div>
   );
 }
